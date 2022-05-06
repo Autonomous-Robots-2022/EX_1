@@ -7,7 +7,11 @@ import javax.swing.*;
 public class SimulationWindow {
 
 	private JFrame frame;
+	public JLabel info_label2;
+	public static boolean toogleRealMap = true;
+	public static boolean toogleAI = false;
 
+	public static AutoAlgo1 algo1;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -28,7 +32,9 @@ public class SimulationWindow {
 	public static JLabel info_label;
 	public static boolean return_home = false;
 	boolean toogleStop = true;
+
 	private void initialize() {
+		// Window settings
 		frame = new JFrame();
 		frame.setSize(1800,700);
 		frame.setTitle("Drone Simulator");
@@ -37,10 +43,7 @@ public class SimulationWindow {
 		
 		
 		
-		/*
-		 * Stop\Resume
-		 */
-	
+		//Stop\Resume
 		JButton stopBtn = new JButton("Start/Pause");
 		stopBtn.addActionListener(new ActionListener()
 		{
@@ -54,13 +57,10 @@ public class SimulationWindow {
 				  toogleStop = !toogleStop;
 			  }
 		});
-		stopBtn.setBounds(1300, 0, 170, 50);
+		stopBtn.setBounds(1300, 0, 170, 50); //button ui
 		frame.getContentPane().add(stopBtn);
-		/*
-		 * Speeds
-		 */
-		
-		
+
+		// speeds button - pitch
 		JButton speedBtn1 = new JButton("speedUp");
 		speedBtn1.addActionListener(new ActionListener()
 		{
@@ -69,7 +69,7 @@ public class SimulationWindow {
 				  algo1.speedUp();
 			  }
 		});
-		speedBtn1.setBounds(1300, 100, 100, 50);
+		speedBtn1.setBounds(1300, 100, 100, 50); // button ui
 		frame.getContentPane().add(speedBtn1);
 		
 		JButton speedBtn2 = new JButton("speedDown");
@@ -125,7 +125,7 @@ public class SimulationWindow {
 		{
 			  public void actionPerformed(ActionEvent e)
 			  {
-				  algo1.spinBy(60);
+				  algo1.spinBy(45);
 			  }
 		});
 		spinBtn4.setBounds(1300, 300, 100, 50);
@@ -259,15 +259,8 @@ public class SimulationWindow {
 		
 		main();
 	}
-	public JLabel info_label2;
-	public static boolean toogleRealMap = true;
-	public static boolean toogleAI = false;
-	
-	public static AutoAlgo1 algo1;
-	
-	
 	public void main() {
-		int map_num = 4;
+		int map_num = 2;
 		Point[] startPoints = {
 				new Point(100,50),
 				new Point(50,60),
@@ -275,7 +268,7 @@ public class SimulationWindow {
 				new Point(84,73),
 				new Point(92,100)};
 		
-		Map map = new Map("D:\\Tests\\Maps\\p1" + map_num + ".png",startPoints[map_num-1]);
+		Map map = new Map("/Users/talzichlinsky/Library/Mobile Documents/com~apple~CloudDocs/Scool/Academic/Third Year/Autonomous-Robots/DroneSimulator/Maps/p1" + map_num + ".png",startPoints[map_num-1]);
 		
 		algo1 = new AutoAlgo1(map);
 		

@@ -15,10 +15,10 @@ public class Drone {
 	private Point pointFromStart;
 	public Point startPoint;
 	public List<Lidar> lidars;
-	private String drone_img_path = "D:\\Tests\\drone_3_pixels.png";
+	private String drone_img_path = "/Users/talzichlinsky/Library/Mobile Documents/com~apple~CloudDocs/Scool/Academic/Third Year/Autonomous-Robots/DroneSimulator/Maps/drone_3_pixels.png";
 	public Map realMap;
 	private double rotation;
-	private double speed;
+	private double speed; // pitch
 	private CPU cpu;
 	
 	public Drone(Map realMap) {
@@ -31,7 +31,7 @@ public class Drone {
 
 		speed = 0.2;
 		
-		rotation = 0;
+		rotation = 0; // yaw
 		gyroRotation = rotation;
 		
 		cpu = new CPU(100,"Drone");
