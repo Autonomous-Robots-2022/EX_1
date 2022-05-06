@@ -61,7 +61,7 @@ public class AutoAlgo1 {
 		updateVisited();
 		updateMapByLidars();
 		
-		ai(deltaTime);
+		ai();
 		
 		
 		if(isRotating != 0) {
@@ -213,16 +213,9 @@ public class AutoAlgo1 {
 		paintPoints(g);
 		
 		drone.paint(g);
-		
-		
 	}
 	
 	boolean is_init = true;
-	double lastFrontLidarDis = 0;
-	boolean isRotateRight = false;
-	double changedRight = 0;
-	double changedLeft = 0;
-	boolean tryToEscape = false;
 	int leftOrRight = 1;
 	
 
@@ -238,15 +231,10 @@ public class AutoAlgo1 {
 	int max_angle_risky = 10;
 	
 	boolean is_lidars_max = false;
-	
-	double save_point_after_seconds = 3;
-	
 	double max_distance_between_points = 100;
-	
-	boolean start_return_home = false;
-	
 	Point init_point;
-	public void ai(int deltaTime) {
+
+	public void ai() {
 		if(!SimulationWindow.toogleAI) {
 			return;
 		}

@@ -1,4 +1,4 @@
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.Random;
 
 public class Lidar{
@@ -50,9 +50,12 @@ public class Lidar{
 		double fromRotation = drone.getRotation()+degrees;
 		Point to = Tools.getPointByDistance(actualPointToShoot, fromRotation, this.current_distance);
 
-		
-	
+		Color c = g.getColor();
+		if (degrees == 0)
+			g.setColor(Color.magenta);
+
 		g.drawLine((int)actualPointToShoot.x,(int)actualPointToShoot.y, (int)to.x, (int)to.y);
+		g.setColor(c);
 	}
 	
 
