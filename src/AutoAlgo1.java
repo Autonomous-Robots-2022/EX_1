@@ -31,6 +31,7 @@ public class AutoAlgo1 {
 		drone.addLidar(0);
 		drone.addLidar(90);
 		drone.addLidar(-90);
+		drone.addLidar(180);
 		
 		initMap();
 		
