@@ -18,6 +18,7 @@ public class AutoAlgo1 {
 	ArrayList<Func> degrees_left_func;
 	
 	boolean isSpeedUp = false;
+	boolean isSpeedDown = false;
 	
 	Graph mGraph = new Graph();
 	
@@ -69,8 +70,11 @@ public class AutoAlgo1 {
 		}
 		if(isSpeedUp) {
 			drone.speedUp(deltaTime);
-		} else {
+			isSpeedUp = false;
+		}
+		if(isSpeedDown){
 			drone.slowDown(deltaTime);
+			isSpeedDown = false;
 		}
 		
 	}
@@ -80,7 +84,7 @@ public class AutoAlgo1 {
 	}
 	
 	public void speedDown() {
-		isSpeedUp = false;
+		isSpeedDown = true;
 	}
 	
 	public void updateMapByLidars() {

@@ -115,17 +115,19 @@ public class Drone {
 	}
 	
 	public void speedUp(int deltaTime) {
-		speed += (WorldParams.accelerate_per_second*deltaTime/1000);
 		if(speed > WorldParams.max_speed) {
-			speed =WorldParams.max_speed;
+			speed = WorldParams.max_speed;
+			return;
 		}
+		speed += (WorldParams.accelerate_per_second*deltaTime/1000);
 	}
 	
 	public void slowDown(int deltaTime) {
-		speed -= (WorldParams.accelerate_per_second*deltaTime/1000);
 		if(speed < 0) {
 			speed = 0;
+			return;
 		}
+		speed -= (WorldParams.accelerate_per_second*deltaTime/1000);
 	}
 	
 	
